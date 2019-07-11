@@ -47,7 +47,7 @@ services:
     networks:
       - backend
       
-manager-pensiuncore:
+ manager-pensiuncore:
     image: prom/node-exporter
     volumes:
       - /proc:/host/proc:ro
@@ -67,7 +67,7 @@ manager-pensiuncore:
     networks:
       - backend
   
-docker-manager-ccc:
+ docker-manager-ccc:
     image: google/cadvisor:latest
     volumes:
     - /:/rootfs:ro
@@ -82,7 +82,7 @@ docker-manager-ccc:
     networks:
       - backend
       
-docker-manager-pensiuncore:
+ docker-manager-pensiuncore:
     image: google/cadvisor:latest
     volumes:
     - /:/rootfs:ro
@@ -97,7 +97,7 @@ docker-manager-pensiuncore:
     networks:
       - backend
 
-grafana:
+ grafana:
     image: grafana/grafana
     #environment:
     #  GF_SMTP_ENABLED: "true"
