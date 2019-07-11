@@ -20,8 +20,8 @@ services:
     networks:
       - frontend
       - backend     
-
-  manager-ccc:
+      
+  nodexporter:
     image: prom/node-exporter
     volumes:
       - /proc:/host/proc:ro
@@ -34,32 +34,13 @@ services:
       - '--collector.filesystem.ignored-mount-points="^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"'
       - '--collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'
     deploy:
-      placement:
-        constraints:
-         - node.hostname == ccc
+      mode: global
+    ports:
+      - "9100:91000"
     networks:
       - backend
       
-  manager-pensiuncore:
-    image: prom/node-exporter
-    volumes:
-      - /proc:/host/proc:ro
-      - /sys:/host/sys:ro
-      - /:/rootfs:ro
-    command:
-      - '--path.procfs=/host/proc'
-      - '--path.sysfs=/host/sys'
-      - '--path.rootfs=/host'
-      - '--collector.filesystem.ignored-mount-points="^(/rootfs|/host|)/(sys|proc|dev|host|etc)($$|/)"'
-      - '--collector.filesystem.ignored-fs-types="^(sys|proc|auto|cgroup|devpts|ns|au|fuse\.lxc|mqueue)(fs|)$$"'
-    deploy:
-      placement:
-        constraints:
-         - node.hostname == pensiuncore
-    networks:
-      - backend
-  
-  docker-manager-ccc:
+  cadvisor:
     image: google/cadvisor:latest
     volumes:
     - /:/rootfs:ro
@@ -67,23 +48,9 @@ services:
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
     deploy:
-      placement:
-        constraints:
-          - node.hostname == ccc
-    networks:
-      - backend
-      
-  docker-manager-pensiuncore:
-    image: google/cadvisor:latest
-    volumes:
-    - /:/rootfs:ro
-    - /var/run:/var/run:rw
-    - /sys:/sys:ro
-    - /var/lib/docker/:/var/lib/docker:ro
-    deploy:
-      placement:
-        constraints:
-          - node.hostname == pensiuncore
+      mode: global
+    ports:
+      - "8080:8080"
     networks:
       - backend
 
