@@ -21,7 +21,7 @@ services:
       - frontend
       - backend     
 
-  ccc:
+  manager-ccc:
     image: prom/node-exporter
     volumes:
       - /proc:/host/proc:ro
@@ -40,7 +40,7 @@ services:
     networks:
       - backend
       
-  pensiuncore:
+  manager-pensiuncore:
     image: prom/node-exporter
     volumes:
       - /proc:/host/proc:ro
