@@ -67,7 +67,7 @@ manager-pensiuncore:
     networks:
       - backend
   
-  docker-manager-ccc:
+docker-manager-ccc:
     image: google/cadvisor:latest
     volumes:
     - /:/rootfs:ro
@@ -97,7 +97,7 @@ docker-manager-pensiuncore:
     networks:
       - backend
 
-  grafana:
+grafana:
     image: grafana/grafana
     #environment:
     #  GF_SMTP_ENABLED: "true"
