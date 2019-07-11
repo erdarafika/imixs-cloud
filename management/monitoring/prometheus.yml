@@ -25,7 +25,7 @@ scrape_configs:
       port: 9090
 
   - job_name: nodexporter
-    scrape_timeout: 70s 
+    scrape_timeout: 60s 
     dns_sd_configs:
     - names:
       - "tasks.nodexporter"
@@ -33,7 +33,7 @@ scrape_configs:
       port: 9100
           
   - job_name: cadvisor
-    scrape_timeout: 70s 
+    scrape_timeout: 60s 
     dns_sd_configs:
     - names:
       - "tasks.cadvisor"
