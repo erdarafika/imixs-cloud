@@ -1,8 +1,7 @@
 version: '3.7'
 
 networks:
-  frontend:
-    name: mynet 
+  mynet:  
   backend: 
   
 services:
@@ -17,7 +16,7 @@ services:
         constraints:
           - node.role == manager
     networks:
-      - frontend
+      - mynet
       - backend     
       
   nodexporter:
@@ -55,10 +54,6 @@ services:
 
   grafana:
     image: grafana/grafana
-    #environment:
-    #  GF_SMTP_ENABLED: "true"
-    #  GF_SMTP_HOST: "mailgateway:25"
-    #  GF_SMTP_FROM_ADDRESS: "alert@myhost.com"
     volumes: 
       - grafana-data:/var/lib/grafana
     ports:
@@ -68,7 +63,7 @@ services:
         constraints:
           - node.hostname == pensiuncore
     networks:
-      - frontend
+      - mynet
       - backend
   
 volumes:
