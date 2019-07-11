@@ -7,6 +7,7 @@ networks:
   backend: 
   
 services:
+
   prometheus:
     image: prom/prometheus:latest
     volumes:
@@ -16,7 +17,7 @@ services:
     deploy: 
       placement:
         constraints:
-          - node.role == manager
+          - node.hostname == pensiuncore
     networks:
       - net
       - backend     
