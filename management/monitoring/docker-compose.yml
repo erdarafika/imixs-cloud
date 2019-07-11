@@ -1,7 +1,9 @@
 version: '3.7'
 
 networks:
-  mynet:  
+  frontend:
+     external:
+       name: imixs-proxy-net   
   backend: 
   
 services:
@@ -16,7 +18,7 @@ services:
         constraints:
           - node.role == manager
     networks:
-      - mynet
+      - frontend
       - backend     
       
   nodexporter:
@@ -63,7 +65,7 @@ services:
         constraints:
           - node.hostname == pensiuncore
     networks:
-      - mynet
+      - frontend
       - backend
   
 volumes:
