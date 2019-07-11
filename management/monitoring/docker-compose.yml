@@ -41,8 +41,6 @@ services:
       mode: global
     ports:
       - "9100:9100"
-    environment:
-      - NODE_ID={{.Node.ID}}
       
   cadvisor:
     image: google/cadvisor:latest
