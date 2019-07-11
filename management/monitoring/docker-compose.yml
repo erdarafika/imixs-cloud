@@ -1,10 +1,4 @@
 version: '3.2'
-
-networks:
-  frontend:
-    external:
-      name: mynet 
-  backend: 
   
 services:
   prometheus:
@@ -119,8 +113,11 @@ services:
       - frontend
       - backend
 
+networks:
+  frontend:
+    external:
+      name: mynet 
+  backend: 
+  
 volumes:
   grafana-data:
-
-
-
