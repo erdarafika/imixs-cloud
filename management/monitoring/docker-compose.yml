@@ -66,6 +66,8 @@ services:
     - /var/run:/var/run:rw
     - /sys:/sys:ro
     - /var/lib/docker/:/var/lib/docker:ro
+    ports:
+      - '9100:9100'
     deploy:
       placement:
         constraints:
