@@ -19,6 +19,7 @@ rule_files:
 scrape_configs:
 
     - job_name: nodexporter
+      scheme: http
       metrics_path: /metrics
       scrape_interval: 15s
       dns_sd_configs:
@@ -26,8 +27,11 @@ scrape_configs:
             - "tasks.nodexporter"
           type: 'A'
           port: 9100
+      tls_config:
+        insecure_skip_verify: true
           
     - job_name: cadvisor
+      scheme: http
       metrics_path: /metrics
       scrape_interval: 15s
       dns_sd_configs:
@@ -35,3 +39,5 @@ scrape_configs:
             - "tasks.cadvisor"
           type: 'A'
           port: 8080
+      tls_config:
+        insecure_skip_verify: true
