@@ -2,8 +2,7 @@ version: '3.7'
 
 networks:
   frontend:
-    external:
-      name: mynet 
+    name: mynet 
   backend: 
   
 services:
