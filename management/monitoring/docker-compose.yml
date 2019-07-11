@@ -6,13 +6,7 @@ networks:
       name: mynet 
   backend: 
   
-
 services:
-
-  ################################################################
-  # Prometheus 
-  #  - runs on manager node
-  ################################################################
   prometheus:
     image: prom/prometheus
     volumes:
@@ -33,12 +27,6 @@ services:
       - frontend
       - backend     
 
-
-  ################################################################
-  # The promethes node-exporter 
-  # For each node a separte service need to be added 
-  ################################################################
-  # START NODE-EXPORTERS.....
   manager-ccc:
     image: prom/node-exporter
     volumes:
@@ -97,20 +85,8 @@ manager-pensiuncore:
 #          # Hostname of the first woker node!
 #          - node.hostname == worker-001
 #     networks:
-#       - backend
-  ################################################################
-  # END NODE-EXPORTERS.....
-  ################################################################
-      
-      
-
-
-
-  ################################################################
-  # cAdvisor
-  #   - runs on every node
-  ################################################################
-  # START CADVISORS.....
+#       - backend      
+  
   docker-manager-ccc:
     image: google/cadvisor:latest
     volumes:
@@ -156,20 +132,6 @@ docker-manager-pensiuncore:
 #     networks:
 #       - backend
 
-  ################################################################
-  # END CADVISORS.....
-  ################################################################
-
-
-
-
-
-
-     
-  ################################################################
-  # Grafana
-  #  - runs on manager node
-  ################################################################
   grafana:
     image: grafana/grafana
     #environment:
@@ -191,8 +153,6 @@ docker-manager-pensiuncore:
     networks:
       - frontend
       - backend
-
-
 
 volumes:
   grafana-data:
