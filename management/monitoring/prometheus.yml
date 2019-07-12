@@ -20,7 +20,8 @@ scrape_configs:
   - job_name: prometheus
     dns_sd_configs:
     - names:
-      - "pensiuncore"
+      - "task.prometheus"
+      type: A
       port: 9090
 
   - job_name: nodexporter 
