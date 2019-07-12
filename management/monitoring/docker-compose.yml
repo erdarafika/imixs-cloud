@@ -29,7 +29,6 @@ services:
       
   nodexporter:
     image: prom/node-exporter:latest
-    container_name: nodexporter
     networks:
       - net
     environment:
