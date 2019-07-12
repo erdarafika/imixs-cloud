@@ -1,13 +1,4 @@
 version: '3.7'
-
-networks:
-  net:
-    driver: overlay
-    attachable: true   
-    
-volumes:
-  grafana-data:
-  prometheus:
   
 services:
   prometheus:
@@ -22,7 +13,9 @@ services:
       - prometheus:/prometheus
     ports:
       - "9090:9090"
-    deploy: 
+    deploy:
+      restart_policy:
+        condition: on-failure
       placement:
         constraints:
           - node.hostname == pensiuncore  
@@ -45,6 +38,8 @@ services:
       - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
       - '--no-collector.ipvs'
     deploy:
+      restart_policy:
+        condition: on-failure
       mode: global
     ports:
       - "9100:9100"
@@ -64,6 +59,8 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
     deploy:
+      restart_policy:
+        condition: on-failure
       mode: global
     ports:
       - "8080:8080"
@@ -80,6 +77,17 @@ services:
     ports:
       - "3000:3000"
     deploy:
+      restart_policy:
+        condition: on-failure
       placement:
         constraints:
           - node.hostname == pensiuncore
+        
+networks:
+  net:
+    driver: overlay
+    attachable: true   
+    
+volumes:
+  grafana-data:
+  prometheus:
