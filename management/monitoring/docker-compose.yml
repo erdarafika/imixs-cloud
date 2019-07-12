@@ -9,6 +9,7 @@ services:
 
   prometheus:
     image: prom/prometheus:latest
+    container_name: prometheus 
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
@@ -26,6 +27,7 @@ services:
       
   nodexporter:
     image: prom/node-exporter:latest
+    container_name: nodexporter
     networks:
       - net
     environment:
@@ -48,6 +50,7 @@ services:
       
   cadvisor:
     image: google/cadvisor:latest
+    container_name: cadvisor
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
@@ -67,6 +70,7 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    container_name: grafana
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
