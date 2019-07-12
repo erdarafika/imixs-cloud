@@ -18,7 +18,7 @@ services:
         constraints:
           - node.hostname == pensiuncore  
       
-  nodexporter:
+  nodexporter-pensiuncore:
     image: prom/node-exporter:latest
     environment:
       - SET_CONTAINER_TIMEZONE=true
@@ -37,7 +37,32 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-      mode: global
+      constraints:
+          - node.hostname == pensiuncore
+    ports:
+      - "9100:9100"
+      
+  nodexporter-ccc:
+    image: prom/node-exporter:latest
+    environment:
+      - SET_CONTAINER_TIMEZONE=true
+      - CONTAINER_TIMEZONE=Asia/Jakarta
+    volumes:
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /:/rootfs:ro
+      - /etc/hostname:/etc/nodename
+    command:
+      - '--path.sysfs=/host/sys'
+      - '--path.procfs=/host/proc'
+      - '--collector.textfile.directory=/etc/node-exporter/'
+      - '--collector.filesystem.ignored-mount-points=^/(sys|proc|dev|host|etc)($$|/)'
+      - '--no-collector.ipvs'
+    deploy:
+      restart_policy:
+        condition: on-failure
+      constraints:
+          - node.hostname == ccc
     ports:
       - "9100:9100"
       
