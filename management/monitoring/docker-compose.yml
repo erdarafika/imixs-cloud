@@ -4,9 +4,12 @@ networks:
   net:
     driver: overlay
     attachable: true   
+    
+volumes:
+  grafana-data:
+  prometheus:
   
 services:
-
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus 
@@ -84,7 +87,3 @@ services:
       placement:
         constraints:
           - node.hostname == pensiuncore
-  
-volumes:
-  grafana-data:
-  prometheus:
