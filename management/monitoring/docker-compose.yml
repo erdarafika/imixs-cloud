@@ -37,8 +37,8 @@ services:
       restart_policy:
         condition: on-failure
       mode: global
-    ports:
-      - "9100:9100"
+#     ports:
+#       - "9100:9100"
       
   cadvisor:
     image: google/cadvisor:latest
@@ -55,8 +55,8 @@ services:
       restart_policy:
         condition: on-failure
       mode: global
-    ports:
-      - "8080:8080"
+#     ports:
+#       - "8080:8080"
 
   grafana:
     image: grafana/grafana:latest
@@ -76,7 +76,8 @@ services:
         
 networks:
   default:
-    name: appnet   
+    external:
+      name: appnet  
     
 volumes:
   grafana-data:
