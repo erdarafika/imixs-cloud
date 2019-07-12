@@ -19,7 +19,7 @@ scrape_configs:
 
   - job_name: 'prometheus'
     target_groups:
-      - targets: ['localhost:9090']
+      - targets: ['prometheus:9090']
 
   - job_name: nodexporter 
     dns_sd_configs:
