@@ -19,7 +19,7 @@ scrape_configs:
 
   - job_name: 'nodexporter'
     static_configs:
-      - targets: ['nodexporter:9100']
+      - targets: ['nodexporter-pensiuncore:9100', 'nodexporter-ccc:9100']
 
       
   - job_name: 'cadvisor'
