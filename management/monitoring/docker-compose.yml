@@ -6,7 +6,6 @@ services:
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
-     - NODE_ID={{.Node.ID}}
     volumes:
       - $PWD/management/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus:/prometheus
@@ -24,7 +23,6 @@ services:
     environment:
       - SET_CONTAINER_TIMEZONE=true
       - CONTAINER_TIMEZONE=Asia/Jakarta
-      - NODE_ID={{.Node.ID}}
     volumes:
       - /proc:/host/proc:ro
       - /sys:/host/sys:ro
@@ -48,7 +46,6 @@ services:
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
-     - NODE_ID={{.Node.ID}}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /:/rootfs:ro
@@ -67,7 +64,6 @@ services:
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
-     - NODE_ID={{.Node.ID}}
     volumes: 
       - grafana-data:/var/lib/grafana
     ports:
