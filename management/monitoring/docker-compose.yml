@@ -13,6 +13,7 @@ services:
       - net
     volumes:
       - $PWD/management/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus:/prometheus
     ports:
       - "9090:9090"
     deploy: 
@@ -73,3 +74,4 @@ services:
   
 volumes:
   grafana-data:
+  prometheus:
