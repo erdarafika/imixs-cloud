@@ -17,12 +17,9 @@ rule_files:
 # Here it's Prometheus itself.
 scrape_configs:
 
-  - job_name: prometheus
-    dns_sd_configs:
-    - names:
-      - "task.prometheus"
-      type: A
-      port: 9090
+  - job_name: 'prometheus'
+      target_groups:
+          - targets: ['localhost:9090']
 
   - job_name: nodexporter 
     dns_sd_configs:
