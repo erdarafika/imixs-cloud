@@ -21,7 +21,6 @@ scrape_configs:
     dns_sd_configs:
     - names:
       - "monitoring_prometheus"
-      type: AAAA
       port: 9090
 
   - job_name: nodexporter 
