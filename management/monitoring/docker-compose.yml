@@ -40,8 +40,6 @@ services:
       placement:
         constraints:
           - node.hostname == pensiuncore
-    ports:
-      - "9100:9100"
       
   nodexporter-ccc:
     image: prom/node-exporter:latest
@@ -65,8 +63,6 @@ services:
       placement:
         constraints:
           - node.hostname == ccc
-    ports:
-      - "9100:9100"
       
   cadvisor:
     image: google/cadvisor:latest
@@ -83,8 +79,6 @@ services:
       restart_policy:
         condition: on-failure
       mode: global
-    ports:
-      - "8080:8080"
 
   grafana:
     image: grafana/grafana:latest
