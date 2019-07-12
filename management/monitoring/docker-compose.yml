@@ -9,6 +9,9 @@ services:
 
   prometheus:
     image: prom/prometheus:latest
+    environment:
+     - SET_CONTAINER_TIMEZONE=true
+     - CONTAINER_TIMEZONE=Asia/Jakarta
     networks:
       - net
     volumes:
@@ -45,6 +48,9 @@ services:
       
   cadvisor:
     image: google/cadvisor:latest
+    environment:
+     - SET_CONTAINER_TIMEZONE=true
+     - CONTAINER_TIMEZONE=Asia/Jakarta
     networks:
       - net
     command: -logtostderr -docker_only
@@ -61,6 +67,9 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    environment:
+     - SET_CONTAINER_TIMEZONE=true
+     - CONTAINER_TIMEZONE=Asia/Jakarta
     networks:
       - net
     volumes: 
