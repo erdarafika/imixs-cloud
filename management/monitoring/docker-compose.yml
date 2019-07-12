@@ -37,7 +37,8 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-      constraints:
+      placement:
+        constraints:
           - node.hostname == pensiuncore
     ports:
       - "9100:9100"
@@ -61,7 +62,8 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
-      constraints:
+      placement:
+        constraints:
           - node.hostname == ccc
     ports:
       - "9100:9100"
