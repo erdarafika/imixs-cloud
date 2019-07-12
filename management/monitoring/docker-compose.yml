@@ -6,8 +6,6 @@ services:
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
-    networks:
-      - net
     volumes:
       - $PWD/management/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus:/prometheus
@@ -22,8 +20,6 @@ services:
       
   nodexporter:
     image: prom/node-exporter:latest
-    networks:
-      - net
     environment:
       - NODE_ID={{.Node.ID}}
     volumes:
@@ -49,8 +45,6 @@ services:
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
-    networks:
-      - net
     command: -logtostderr -docker_only
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -70,8 +64,6 @@ services:
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
-    networks:
-      - net
     volumes: 
       - grafana-data:/var/lib/grafana
     ports:
@@ -84,9 +76,9 @@ services:
           - node.hostname == pensiuncore
         
 networks:
-  net:
-    driver: overlay
-    attachable: true   
+  default:
+    external:
+      name: appnet   
     
 volumes:
   grafana-data:
