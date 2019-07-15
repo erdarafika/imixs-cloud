@@ -89,5 +89,5 @@ networks:
     external: true  
     
 volumes:
-  grafana-data:
+#   grafana-data:
   prometheus:
