@@ -1,27 +1,27 @@
 version: '3.7'
   
 services:
-  prometheus:
-    image: prom/prometheus:latest
-    hostname: "{{.Node.Hostname}}"
-    networks:
-      - appnet
-    environment:
-     - SET_CONTAINER_TIMEZONE=true
-     - CONTAINER_TIMEZONE=Asia/Jakarta
-    volumes:
-      - $PWD/management/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus:/prometheus
-    ports:
-      - "9090:9090"
-    deploy:
-      restart_policy:
-        condition: on-failure
-      placement:
-        constraints:
-          - node.hostname == pensiuncore  
+#   prometheus:
+#     image: prom/prometheus:latest
+#     hostname: "{{.Node.Hostname}}"
+#     networks:
+#       - appnet
+#     environment:
+#      - SET_CONTAINER_TIMEZONE=true
+#      - CONTAINER_TIMEZONE=Asia/Jakarta
+#     volumes:
+#       - $PWD/management/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+#       - prometheus:/prometheus
+#     ports:
+#       - "9090:9090"
+#     deploy:
+#       restart_policy:
+#         condition: on-failure
+#       placement:
+#         constraints:
+#           - node.hostname == pensiuncore  
       
-  nodexporter:
+  node-exporter:
     image: prom/node-exporter:latest
     hostname: "{{.Node.Hostname}}"
     networks:
