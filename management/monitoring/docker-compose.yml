@@ -64,24 +64,24 @@ services:
         condition: on-failure
       mode: global
 
-  grafana:
-    image: grafana/grafana:latest
-    hostname: "{{.Node.Hostname}}"
-    networks:
-      - appnet
-    environment:
-     - SET_CONTAINER_TIMEZONE=true
-     - CONTAINER_TIMEZONE=Asia/Jakarta
-    volumes: 
-      - grafana-data:/var/lib/grafana
-    ports:
-      - "3000:3000"
-    deploy:
-      restart_policy:
-        condition: on-failure
-      placement:
-        constraints:
-          - node.hostname == pensiuncore
+#   grafana:
+#     image: grafana/grafana:latest
+#     hostname: "{{.Node.Hostname}}"
+#     networks:
+#       - appnet
+#     environment:
+#      - SET_CONTAINER_TIMEZONE=true
+#      - CONTAINER_TIMEZONE=Asia/Jakarta
+#     volumes: 
+#       - grafana-data:/var/lib/grafana
+#     ports:
+#       - "3000:3000"
+#     deploy:
+#       restart_policy:
+#         condition: on-failure
+#       placement:
+#         constraints:
+#           - node.hostname == pensiuncore
         
 networks:
   appnet:
