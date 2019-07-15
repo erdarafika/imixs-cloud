@@ -26,6 +26,8 @@ services:
     hostname: "{{.Node.Hostname}}"
     networks:
       - appnet
+    ports:
+      - "9100:9100"
     environment:
       - SET_CONTAINER_TIMEZONE=true
       - CONTAINER_TIMEZONE=Asia/Jakarta
@@ -50,6 +52,8 @@ services:
     hostname: "{{.Node.Hostname}}"
     networks:
       - appnet
+    ports:
+      - "8080:8080"
     environment:
      - SET_CONTAINER_TIMEZONE=true
      - CONTAINER_TIMEZONE=Asia/Jakarta
