@@ -3,6 +3,7 @@ version: '3.7'
 services:
   prometheus:
     image: prom/prometheus:latest
+    hostname: "{{.Node.Hostname}}"
     networks:
       - appnet
     environment:
@@ -22,6 +23,7 @@ services:
       
   nodexporter:
     image: prom/node-exporter:latest
+    hostname: "{{.Node.Hostname}}"
     networks:
       - appnet
     environment:
@@ -45,6 +47,7 @@ services:
       
   cadvisor:
     image: google/cadvisor:latest
+    hostname: "{{.Node.Hostname}}"
     networks:
       - appnet
     environment:
@@ -63,6 +66,7 @@ services:
 
   grafana:
     image: grafana/grafana:latest
+    hostname: "{{.Node.Hostname}}"
     networks:
       - appnet
     environment:
