@@ -6,7 +6,7 @@
     [entryPoints.https.tls]
 
 [acme]
-email = "test@traefik.io"
+email = "platform@codecoffeecreative.com"
 storage = "acme.json"
 onHostRule = true
 caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
