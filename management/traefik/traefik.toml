@@ -7,7 +7,7 @@
 
 [acme]
 email = "platform@codecoffeecreative.com"
-storage = "acme.json"
+storage = "/etc/traefik/acme/acme.json"
 onHostRule = true
 caServer = "https://acme-staging-v02.api.letsencrypt.org/directory"
 entryPoint = "https"
